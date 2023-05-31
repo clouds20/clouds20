@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}"> 
+   <title>Weather App</title>
+</head>
+<body>
+   <h2>Singapore</h2>
+   <p>{{ today['timestamp'] }}</p>
+   <h1>{{ today['general']['temperature']['high']}} °C</h1>
+   <p>{{ today['general']['forecast'] }}</p>
+   <p>H: {{ today['general']['temperature']['high']}} °C L: {{ today['general']['temperature']['low']}} °C </p>
+    {% for day in fourday %}
+	<p>{{ day['date'] }}</p>
+	<p>{{ day['forecast']}}</p>
+	<p>H: {{ day['temperature']['high']}} °C L: {{ day['temperature']['low']}} °C</p>
+    {% endfor %}
+</body>
+</html>
