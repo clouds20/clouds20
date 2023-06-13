@@ -2,18 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}"> 
-   <title>Weather App</title>
+    <!-- Weather variable icon font stylesheet-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Clouds 20</title>
 </head>
 <body>
    <h2>Singapore</h2>
-   <p>{{ today['timestamp'] }}</p>
-   <h1>{{ today['general']['temperature']['high']}} °C</h1>
-   <p>{{ today['general']['forecast'] }}</p>
-   <p>H: {{ today['general']['temperature']['high']}} °C L: {{ today['general']['temperature']['low']}} °C </p>
-    {% for day in fourday %}
+
+   <!-- Display current temperature-->
+   <h1>{{ current_temp }} °C</h1>
+
+   <!-- Display weather forecasts-->
+    {% for day in forecast %}
 	<p>{{ day['date'] }}</p>
-	<p>{{ day['forecast']}}</p>
+	<p>{{ day['forecast'] }} <span class="material-symbols-outlined">{{ day['icon'] }}</span></p>
 	<p>H: {{ day['temperature']['high']}} °C L: {{ day['temperature']['low']}} °C</p>
     {% endfor %}
 </body>
